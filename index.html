@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="OpenGaFF">
+  <meta name="keywords" content="3D Scene Understanding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenGaFF</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/none.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div>
+
+  </div>
+</nav> -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">OpenGaFF: Open-Vocabulary Gaussian Feature Field with Codebook Attention</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"></span>
+              <a href="https://li-kunyi.github.io/">Kunyi Li</a><sup>1,3</sup>,
+            </span>
+
+            <span class="author-block"></span>
+              <a href="https://m-niemeyer.github.io/">Michael Niemeyer</a><sup>2</sup>,
+            </span>
+
+            <span class="author-block"></span>
+              <a href="https://scholar.google.com/citations?user=OxZ9S6oAAAAJ&hl=en">Sen Wang</a><sup>1,3</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=YuWTPaIAAAAJ&hl=en">Stefano Gasperini</a><sup>1,3,4</sup>,
+            </span>
+
+            <span class="author-block">
+              <a href="https://www.professoren.tum.de/en/navab-nassir">Nassir Navab</a><sup>1,3</sup>
+            </span>
+
+            <span class="author-block">
+              <a href="https://federicotombari.github.io/">Federico Tombari</a><sup>1,2,3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Technical University of Munich,</span>
+            <span class="author-block"><sup>2</sup>Google,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>3</sup>Munich Center for Machine Learning,</span>
+            <span class="author-block"><sup>4</sup>Visualais</span> 
+          </div>
+
+          <!-- <h1 class="cvpr-title">***</h1> -->
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2605.06088"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2605.06088"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- < span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>  -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">OpenGaFF: Open-Vocabulary Gaussian Feature Field with Codebook Attention</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Supplementary Material</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Submission</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="publication-image">
+            <img src="./static/images/teaser.png"
+                alt="teaser"
+                style="width: 100%; height: auto;">
+          </div>
+
+          <h2 class="title is-3">Abstract</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              Understanding open-vocabulary 3D scenes with Gaussian-based representations remains challenging 
+              due to fragmented and spatially inconsistent semantic predictions across multi-view observations. 
+              In this paper, we present OpenGaFF, a novel framework for open-vocabulary 3D scene understanding 
+              built upon 3D Gaussian Splatting. At the core of our method is a Gaussian Feature Field that models 
+              semantics as a continuous function of Gaussian geometry and appearance. By explicitly conditioning 
+              semantic predictions on geometric structure, this formulation strengthens the coupling between 
+              geometry and semantics, leading to improved spatial coherence across similar structures in 3D space. 
+              To further enforce object-level semantic consistency, we introduce a structured codebook that 
+              serves as a set of shared semantic primitives. Furthermore, a codebook-guided attention mechanism 
+              is proposed to retrieve language features via similarity matching between query embeddings and 
+              learned codebook entries, enabling robust open-vocabulary reasoning while reducing intra-object 
+              feature variance. Extensive experiments on standard 2D and 3D open-vocabulary benchmarks demonstrate 
+              that our method consistently outperforms prior approaches, achieving improved segmentation quality, 
+              stronger 3D semantic consistency and a semantically interpretable codebook that provides insight into 
+              the learned representation.
+          </div>
+
+          <div class="publication-image">
+            <img src="./static/images/pipeline.png"
+                alt="pipeline"
+                style="width: 100%; height: auto;">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">Multi-modal Rendering and Open-Vocabulary 3D Query on LERF-OVS (Figurines)</h2>
+            <div class="content has-text-justified">
+              <p>
+                We visualize multi-view renderings of 3D Gaussians, including RGB, depth, low-dimensional semantic features, 
+                and language features, demonstrating the versatility of our representation. We further show text-driven 3D queries, 
+                where the corresponding objects are selected and rendered separately. 
+                Finally, we compare our language features with LangSplatV2, 
+                where its features exhibit noticeable intra-object variation and lack object-level consistency. 
+                In contrast, our method produces highly consistent language features across each object, 
+                benefiting from the proposed Gaussian Feature Field and codebook-based attention mechanism.
+              </p>
+            </div>
+
+            <video id="main" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Figurines.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">Multi-modal Rendering on LERF-OVS (Kitchen)</h2>
+            <video id="main" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Kitchen.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Object Visualization on LERF-OVS (Figurines)</h2>
+        <div class="content has-text-justified">
+          <p>
+            We show 3D open-vocabualry visualization on Figurines, where the corresponding objects are selected and rendered separately.
+            Compared with LangSplatV2, our method can segment objects in 3D more consistently.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-3">LangSplatV2</h2>
+            <video id="lang_apple" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/LangSplatV2_green_apple.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-3">Ours</h2>
+            <video id="ours_apple" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Ours_green_apple.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <h2 class="title is-5">Query: "Green Apple"</h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="lang_toy_chair" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/LangSplatV2_green_toy_chair.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="ours_toy_chair" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Ours_green_toy_chair.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="columns is-centered">
+      <h2 class="title is-5">Query: "Green Toy Chair"</h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="lang_pumpkin" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/LangSplatV2_pumpkin.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="ours_pumpkin" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Ours_pumpkin.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+
+    </div>    
+    <div class="columns is-centered">
+      <h2 class="title is-5">Query: "Pumpkin"</h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Object Visualization on LERF-OVS (Teatime)</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-3">LangSplatV2</h2>
+            <video id="lang_apple" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/LangSplatV2_sheep.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-3">Ours</h2>
+            <video id="ours_apple" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Ours_sheep.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <h2 class="title is-5">Query: "Sheep"</h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="lang_toy_chair" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/LangSplatV2_coffee.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="ours_toy_chair" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Ours_coffee.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="columns is-centered">
+      <h2 class="title is-5">Query: "Coffee"</h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> </h2>
+        <div class="content has-text-justified">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Visualization on ScanNet-v2 (scene0000)</h2>
+        <div class="content has-text-justified">
+          <p>
+            LangSplatV2 exhibits noticeable noise in predicted semantic point clouds during 3D OVS. 
+            Our method retrieves nearly all object points and produces more complete and coherent segmentations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">      
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">GT Mesh</h2>
+            <video id="gt" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/GT_mesh.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">GT Semantics</h2>
+            <video id="gt_semantics" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/GT_semantics.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">LangSplatV2</h2>
+            <video id="lang_splat_v2" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/LangSplatV2.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">Ours</h2>
+            <video id="ours" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Ours.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Visualization on ScanNet-v2 (scene0140)</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">      
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">GT Mesh</h2>
+            <video id="gt" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/GT_mesh_1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">GT Semantics</h2>
+            <video id="gt_semantics" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/GT_semantics_1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">LangSplatV2</h2>
+            <video id="lang_splat_v2" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/LangSplatV2_1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">Ours</h2>
+            <video id="ours" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Ours_1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">Multi-modal Rendering on MipNeRF360 (Garden)</h2>
+            <video id="main" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Garden.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content has-text-centered">
+            <h2 class="title is-4">Multi-modal Rendering on MipNeRF360 (Room)</h2>
+            <video id="main" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/Room.mp4"
+                      type="video/mp4">
+            </video>
+            <!-- <p class="subtitle is-6"> Top-Down View</p> -->
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+</body>
+</html>
